@@ -15,11 +15,14 @@ datasource db {
   relationMode = "prisma"
 }
 
-
-model Example {
+model Todo {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    content   String
+    done      Boolean
+    authorId  String
+
+    @@index([authorId])
 }
 
 // Necessary for Next auth
